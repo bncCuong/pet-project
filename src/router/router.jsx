@@ -7,7 +7,8 @@ import store from '../stores/store/store';
 import GlobalStyle from '../components/GlobalStyle/index';
 import Login from '../components/pages/Login';
 import ProtectedRoute from './ProtectedRoute';
-const AuthLayout = () => {
+import Error from '../components/pages/Error';
+const ContainerLayout = () => {
     return (
         <GlobalStyle>
             <Provider store={store}>
@@ -18,7 +19,8 @@ const AuthLayout = () => {
 };
 export default createBrowserRouter([
     {
-        element: <AuthLayout />,
+        element: <ContainerLayout />,
+        errorElement: <Error />,
         children: [
             {
                 element: <Login />,

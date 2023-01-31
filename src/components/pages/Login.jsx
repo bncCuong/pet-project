@@ -12,6 +12,7 @@ const Login = (props) => {
         const provider = new GoogleAuthProvider();
         const reponse = await signInWithPopup(auth, provider);
         dispatch(loginActions.getInfoUser(reponse.user));
+
         if (reponse.user.uid) {
             navigate('/');
         }
@@ -20,9 +21,16 @@ const Login = (props) => {
     return (
         <div className="mt-[50px] flex flex-col items-center">
             <p className="text-2xl font-semibold mb-5 relative"> Welcome to my PROJECT</p>
+            <div className="flex items-center max-w-[730px] h-[50px] flex-col mb-14">
+                <p>
+                    Thank you for visiting my application. This is my first attempt at the Extended Todo App and still
+                    under development so feel free to look around and give me feedback to make this app even better.
+                </p>
+                <p className="mt-6 text-xl font-semibold"> So let's get started</p>
+            </div>
             <button
                 onClick={loginWhitGoolgeHanler}
-                className="border-[2px] border-gray-400 px-4 py-1 rounded-xl flex items-center gap-3 hover:bg-gray-300 "
+                className="border-[2px] border-gray-400 px-4 py-1 rounded-xl flex items-center gap-3 hover:bg-gray-400"
             >
                 <img src="https://accounts.fullstack.edu.vn/assets/images/signin/google-18px.svg" alt="google-icon" />
                 <span className="text-gray-800 pb-[2px] font-semibold">Login whit Goolge</span>

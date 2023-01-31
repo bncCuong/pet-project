@@ -1,18 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { loginActions } from '../../stores/store/actions/login-slice';
+import Header from '../Layout/Header';
+import Navbar from '../Layout/NavBar';
 const Home = (props) => {
-    const navigate = useNavigate();
-    const dispath = useDispatch();
-
-    const logoutHanler = () => {
-        dispath(loginActions.logout());
-        navigate('/login');
-    };
     return (
-        <div>
-            Home Page
-            <button onClick={logoutHanler}>logout</button>
+        <div className="w-full flex flex-col">
+            <Header />
+            <div className="flex">
+                <Navbar />
+                <div className=" w-[75%]">{props.children}</div>
+            </div>
         </div>
     );
 };

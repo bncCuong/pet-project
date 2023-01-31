@@ -12,6 +12,7 @@ const loginSlice = createSlice({
                 state.info.push({
                     name: infoUser.displayName,
                     avatar: infoUser.photoURL,
+                    email: infoUser.email,
                     accessToken: infoUser.accessToken,
                     uid: infoUser.uid,
                 });
