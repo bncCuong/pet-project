@@ -6,7 +6,7 @@ const MENU_LIST = [
     { id: 'it1', title: 'today', icon: <FontAwesomeIcon icon={faSun} />, to: '/today' },
     { id: 'it2', title: 'Important', icon: <FontAwesomeIcon icon={faSun} />, to: '/important' },
     { id: 'it3', title: 'Completed', icon: <FontAwesomeIcon icon={faSun} />, to: '/completed' },
-    { id: 'it3', title: 'Task', icon: <FontAwesomeIcon icon={faSun} />, to: '/task' },
+    { id: 'it4', title: 'Task', icon: <FontAwesomeIcon icon={faSun} />, to: '/task' },
 ];
 const MenuList = (props) => {
     const menuList = MENU_LIST.map((item) => (
