@@ -10,7 +10,7 @@ import GlobalStyle from '../components/GlobalStyle/index';
 import Login from '../components/pages/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Error from '../components/pages/Error';
-import { ToDayPage, ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
+import { MyDayPage, ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
 const ContainerLayout = () => {
     return (
         <GlobalStyle>
@@ -38,7 +38,7 @@ export default createBrowserRouter([
                         element: <Home />,
                         path: '/',
                         children: [
-                            { element: <ToDayPage />, path: '/today' },
+                            { element: <MyDayPage />, path: '/today' },
                             { element: <ImportantPage />, path: '/important' },
                             { element: <CompletedPage />, path: '/completed' },
                             { element: <TaskPage />, path: '/task' },

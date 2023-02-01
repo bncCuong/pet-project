@@ -4,8 +4,8 @@ const TimeAndDate = (props) => {
     return (
         <div className=" px-4 ">
             <div className="flex items-center gap-2">
-                <p className="text-xl text-gray-400 font-semibold">{currentYear}</p>
-                <div className="text-xl font-bold text-white">{toDay}</div>
+                <p className="text-xl text-gray-400 font-bold">{currentYear} - </p>
+                <div className="text-xl font-bold text-white pb-[1px]">{toDay}</div>
             </div>
             <div className="flex gap-3">
                 <div>{currentDay}</div>

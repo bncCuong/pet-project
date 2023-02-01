@@ -11,7 +11,6 @@ const Header = () => {
     const dispath = useDispatch();
     const infoUser = useSelector((state) => state.login.info);
     const { name, avatar, email } = infoUser;
-    console.log(infoUser);
 
     const logoutHanler = () => {
         dispath(loginActions.logout());
