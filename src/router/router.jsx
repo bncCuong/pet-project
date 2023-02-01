@@ -3,16 +3,21 @@ import { Provider } from 'react-redux';
 
 import Home from '../components/pages/Home';
 
-import store from '../stores/store/store';
+import store, { persistor } from '../stores/store/store';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+
 import GlobalStyle from '../components/GlobalStyle/index';
 import Login from '../components/pages/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Error from '../components/pages/Error';
+import { ToDayPage, ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
 const ContainerLayout = () => {
     return (
         <GlobalStyle>
             <Provider store={store}>
-                <Outlet />
+                <PersistGate loading={null} persistor={persistor}>
+                    <Outlet />
+                </PersistGate>
             </Provider>
         </GlobalStyle>
     );
@@ -32,6 +37,12 @@ export default createBrowserRouter([
                     {
                         element: <Home />,
                         path: '/',
+                        children: [
+                            { element: <ToDayPage />, path: '/today' },
+                            { element: <ImportantPage />, path: '/important' },
+                            { element: <CompletedPage />, path: '/completed' },
+                            { element: <TaskPage />, path: '/task' },
+                        ],
                     },
                 ],
             },

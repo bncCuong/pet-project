@@ -10,8 +10,9 @@ const Header = () => {
     const navigate = useNavigate();
     const dispath = useDispatch();
     const infoUser = useSelector((state) => state.login.info);
-    const { name, avatar, email } = infoUser[0];
+    const { name, avatar, email } = infoUser;
     console.log(infoUser);
+
     const logoutHanler = () => {
         dispath(loginActions.logout());
         navigate('/login');

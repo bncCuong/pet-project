@@ -12,8 +12,7 @@ const Login = (props) => {
         const provider = new GoogleAuthProvider();
         const reponse = await signInWithPopup(auth, provider);
         dispatch(loginActions.getInfoUser(reponse.user));
-
-        if (reponse.user.uid) {
+        if (localStorage.getItem('uid')) {
             navigate('/');
         }
     };
