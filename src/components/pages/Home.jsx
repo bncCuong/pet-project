@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../Layout/Header';
+import Header from '../Layout/Header/Header';
 import Navbar from '../Layout/Navbar/NavBar';
 const Home = (props) => {
     return (
@@ -7,7 +7,7 @@ const Home = (props) => {
             <Header />
             <div className="flex">
                 <Navbar />
-                <div className=" w-[75%]">
+                <div className=" relative w-[75%]">
                     <Outlet />
                 </div>
             </div>

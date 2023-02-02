@@ -4,8 +4,6 @@ const todoSlice = createSlice({
     name: 'todolist',
     initialState: {
         todoList: [],
-        important: false,
-        completed: false,
     },
     reducers: {
         addToDo(state, action) {
@@ -13,10 +11,11 @@ const todoSlice = createSlice({
             state.todoList.push({
                 name: newJob.name,
                 time: newJob.time,
-                important: newJob.important,
-                completed: newJob.completed,
+                important: true,
+                completed: false,
             });
         },
+        setImpotant(state, action) {},
     },
 });
 

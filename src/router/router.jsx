@@ -11,6 +11,7 @@ import Login from '../components/pages/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Error from '../components/pages/Error';
 import { MyDayPage, ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
+import WeatherPage from '../components/pages/childrenPage/WeatherPage';
 const ContainerLayout = () => {
     return (
         <GlobalStyle>
@@ -42,6 +43,7 @@ export default createBrowserRouter([
                             { element: <ImportantPage />, path: '/important' },
                             { element: <CompletedPage />, path: '/completed' },
                             { element: <TaskPage />, path: '/task' },
+                            { element: <WeatherPage />, path: '/weather' },
                         ],
                     },
                 ],

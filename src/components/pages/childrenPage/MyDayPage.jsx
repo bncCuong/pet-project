@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { todoActions } from '../../../stores/store/actions/todo-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNeuter } from '@fortawesome/free-solid-svg-icons';
@@ -8,13 +8,15 @@ import backgroundImg from '../../../assets/bgimage.jpg';
 import Tippy from '@tippyjs/react/headless';
 
 import TippyStyles from '../../UI/TippyStyle';
+import Cart from '../../UI/Cart';
 
 function MyDayPage() {
     const [job, setJob] = useState('');
     const [showIcon, setShowIcon] = useState(true);
-
+    const [showText, setShowText] = useState(true);
     const dispatch = useDispatch();
 
+    const listJob = useSelector((state) => state.addTodo.todoList);
     const getTime = () => {
         const d = new Date();
         const currentHours = d.getHours();
@@ -23,6 +25,11 @@ function MyDayPage() {
         return `${currentHours}:${currentMinutes}`;
     };
     const keydownHanler = (e) => {
+        setShowText(false);
+
+        if (e.target.value.trim().length === 0) {
+            return;
+        }
         const keyPress = e.keyCode;
         if (keyPress === 13) {
             dispatch(
@@ -39,12 +46,20 @@ function MyDayPage() {
 
     const mouseOutHanler = () => {
         setShowIcon(true);
+        setShowText(true);
     };
 
     const mouseUpHanler = () => {
         setShowIcon(false);
-        
+        if (job.length > 0) {
+            setShowText(false);
+        }
     };
+
+    const changeInputHanler = (e) => {
+        setJob(e.target.value);
+    };
+
     return (
         <div className="p-10 h-[100%] relative">
             <div className="absolute  top-0 bottom-0 right-0 left-0 z-0">
@@ -53,8 +68,14 @@ function MyDayPage() {
             <div className="absolute border-[1px] px-2 py-1 rounded-md shadow-2xl ">
                 <p className="text-3xl font-semibold text-black z-10">My Day </p>
                 <p className="text-xl font-semibold">
-                    Focus on your day: Get things done whit My day, a list that refreshes every day
+                    Focus on your day: Get things done whit My day, a list that refreshes every day!!!
                 </p>
+            </div>
+
+            <div className="absolute top-[150px] h-[58%] w-[89%] overflow-y-scroll">
+                {listJob.map((job, index) => (
+                    <Cart key={index} name={job.name} />
+                ))}
             </div>
 
             <Tippy
@@ -63,12 +84,12 @@ function MyDayPage() {
                 render={(attrs) => <TippyStyles {...attrs}>Add a task in My day</TippyStyles>}
             >
                 <input
-                    className="absolute bottom-[100px] border w-[90%] bg-neutral-300 hover:bg-white outline-none pl-10 pr-20 py-2 rounded-md"
-                    onChange={(e) => setJob(e.target.value)}
-                    onKeyDown={keydownHanler}
+                    className="absolute bottom-[100px] border w-[89%] bg-neutral-300 hover:bg-white outline-none pl-10 pr-20 py-2 rounded-md"
+                    onChange={changeInputHanler}
                     value={job}
                     onBlur={mouseOutHanler}
                     onMouseUp={mouseUpHanler}
+                    onKeyDown={keydownHanler}
                 />
             </Tippy>
             <p className="absolute text-2xl bottom-[106px] ml-3 pointer-events-none ">
@@ -77,9 +98,11 @@ function MyDayPage() {
                 ) : (
                     <div className="">
                         <FontAwesomeIcon icon={faCircle} className="text-[20px] pb-[2px]" />
-                        <span className="absolute text-sm ml-3 bottom-1 w-[300px] ">
-                            Try typing'buy lamborghini today'
-                        </span>
+                        {showText && (
+                            <span className="absolute text-sm ml-3 bottom-1 w-[300px] ">
+                                Try typing'buy lamborghini today'
+                            </span>
+                        )}
                     </div>
                 )}
             </p>
