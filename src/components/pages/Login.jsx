@@ -20,7 +20,7 @@ const Login = (props) => {
     return (
         <div className="mt-[50px] flex flex-col items-center">
             <p className="text-2xl font-semibold mb-5 relative"> Welcome to my PROJECT</p>
-            <div className="flex items-center max-w-[730px] h-[50px] flex-col mb-14">
+            <div className="flex items-center max-w-[730px] h-[80px] flex-col mb-14">
                 <p>
                     Thank you for visiting my application. This is my first attempt at the Extended Todo App and still
                     under development so feel free to look around and give me feedback to make this app even better.
