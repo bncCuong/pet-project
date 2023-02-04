@@ -5,24 +5,15 @@ const API_KEY = 'bc8a11406fc342206116bb24c1a24a78';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 export const fetchWeatherData = (searchParams) => {
-    const q = searchParams;
-    console.log(q);
-
     return async (dispatch) => {
         const getWeatherData = async (infoType, searchParams) => {
             console.log(searchParams);
+
             const url = new URL(BASE_URL + '/' + infoType);
             url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
             // https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=bc8a11406fc342206116bb24c1a24a78
             const reponse = await fetch(url);
-
-            // if (!reponse.ok) {
-            //     throw new Error('Fetching data is failed!');
-            // }
-            // const data = await reponse.json();
-            // console.log(data);
-            // // console.log(url);
-            // return { data };
+            return reponse.json();
         };
 
         try {
@@ -88,7 +79,7 @@ export const fetchWeatherData = (searchParams) => {
                     lat,
                     lon,
                     exclude: 'crrent, minutely, alerts',
-                    unit: searchParams.unit,
+                    units: searchParams.units,
                 }).then(formatForecastWeather);
 
                 return { ...fomattedForecastWeather, ...formatedCurrentWeather };
