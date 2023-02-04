@@ -1,5 +1,5 @@
 function ImpotantPage() {
-    return <div>Impotant Page</div>;
+    return <div>import page</div>;
 }
 
 export default ImpotantPage;

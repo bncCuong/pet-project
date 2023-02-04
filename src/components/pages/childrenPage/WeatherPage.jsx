@@ -1,22 +1,31 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
-import sunRise from '../../../assets/weather-sunset.jpg';
 import { faCloudSunRain, faPlusMinus, faSearch, faTemperature4 } from '@fortawesome/free-solid-svg-icons';
+import sunRise from '../../../assets/weather-sunset.jpg';
 
-import getWeatherData from '../../../services/weather-services';
+import { fetchWeatherData } from '../../../services/weather-services';
+
 const WeatherPage = () => {
-    const weatherData = async () => {
-        const data = await getWeatherData('weather', { q: 'tokoy' });
-        console.log(data);
-    };
-    weatherData();
+    const dispatch = useDispatch();
+    const weatherCity = useSelector((state) => state.getWeatherData.infoCity);
+
+    console.log(weatherCity);
+
+    useEffect(() => {
+        dispatch(fetchWeatherData({ q: 'london' }));
+    }, [dispatch]);
+
     return (
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-white ">
             <img src={sunRise} alt="sunimage" className="absolute object-contain" />
             <div className="absolute flex flex-col p-5 w-full">
                 <div className="h-[180px] flex ">
                     <div className="w-[200px] flex-[33%]">
-                        <p className="text-xl text-white font-semibold">Hồ Chí Minh City</p>
+                        <p className="text-xl text-white font-semibold">
+                            {/* {weatherCity.name}, {weatherCity.country} */}
+                        </p>
                         <p className="text-[13px] mt-5">
                             The air quanlity is generally accteptable for most individuals. However, sentitive groups
                             may experience minor to moderate symptoms from long-term exposure
