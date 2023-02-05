@@ -1,14 +1,11 @@
 import { weatherActions } from '../stores/store/actions/weather-slice';
 import { DateTime } from 'luxon';
-
 const API_KEY = 'bc8a11406fc342206116bb24c1a24a78';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-export const fetchWeatherData = (searchParams) => {
-    return async (dispatch) => {
+export const fetchWeatherData = () => {
+    return async (dispatch, getState) => {
         const getWeatherData = async (infoType, searchParams) => {
-            console.log(searchParams);
-
             const url = new URL(BASE_URL + '/' + infoType);
             url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
             // https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=bc8a11406fc342206116bb24c1a24a78
@@ -17,7 +14,6 @@ export const fetchWeatherData = (searchParams) => {
         };
 
         try {
-            //Hàm lấy ra những dữ liệu cần thiết nhận được từ API
             function getData(data) {
                 const {
                     coord: { lat, lon },
@@ -45,46 +41,36 @@ export const fetchWeatherData = (searchParams) => {
                     speed,
                 };
             }
-            // Hàm format data thời tiết
+            const formatLocalTime = (secs, zone, format = "cccc, dd LLL yyyy | Local time: 'hh:mm a' ") =>
+                DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
+
             const formatForecastWeather = (data) => {
-                let { timezone, daily, hourly } = data;
-                daily = daily.slice(1, 6).map((d) => {
+                let {
+                    city: { timezone },
+                    list,
+                } = data;
+                const hoursly = list.slice(1, 6).map((item) => {
                     return {
-                        title: formatLocalTime(d.dt, timezone, 'ccc'),
-                        temp: d.temp.day,
-                        icon: d.weather[0].icon,
+                        title: formatLocalTime(item.dt, timezone, 'hh:mm a'),
+                        temp: item.main.temp,
+                        wind: item.wind.speed,
+                        icon: item.weather[0].icon,
                     };
                 });
-                hourly = hourly.slice(1, 6).map((d) => {
-                    return {
-                        title: formatLocalTime(d.dt, timezone, 'hh:mm a'),
-                        temp: d.temp.day,
-                        icon: d.weather[0].icon,
-                    };
-                });
-
-                return { daily, hourly, timezone };
+                return { timezone, hoursly };
             };
-
-            // Hàm format lại hiển thị ngày giờ
-            const formatLocalTime = (secs, zone, format = "cccc, dd LLL yyyy' | Local time:'hh:mm a'") =>
-                DateTime.fromSeconds(secs).zone(zone).format(format);
-
-            // Hàm trả dữ liệu nhận về rồi lưu vào store
-            const formattedWeatherData = async (searchParams) => {
+            const fomattedDataWeather = async (searchParams) => {
                 const formatedCurrentWeather = await getWeatherData('weather', searchParams).then(getData);
                 const { lat, lon } = formatedCurrentWeather;
 
-                const fomattedForecastWeather = await getWeatherData('onecall', {
+                const formattedForecastWeather = await getWeatherData('forecast', {
                     lat,
                     lon,
-                    exclude: 'crrent, minutely, alerts',
                     units: searchParams.units,
                 }).then(formatForecastWeather);
-
-                return { ...fomattedForecastWeather, ...formatedCurrentWeather };
+                return { ...formatedCurrentWeather, ...formattedForecastWeather };
             };
-            dispatch(weatherActions.addWeatherData(formattedWeatherData()));
+            fomattedDataWeather();
         } catch (error) {
             throw new Error('Fetching data is failed!');
         }

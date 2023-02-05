@@ -10,11 +10,10 @@ import { fetchWeatherData } from '../../../services/weather-services';
 const WeatherPage = () => {
     const dispatch = useDispatch();
     const weatherCity = useSelector((state) => state.getWeatherData.infoCity);
-
     console.log(weatherCity);
 
     useEffect(() => {
-        dispatch(fetchWeatherData({ q: 'london' }));
+        dispatch(fetchWeatherData({ q: 'tokyo' }));
     }, [dispatch]);
 
     return (

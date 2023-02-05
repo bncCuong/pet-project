@@ -27,13 +27,6 @@ const persitedReducer = persistReducer(persistConfig, reducer);
 // });
 const store = configureStore({
     reducer: persitedReducer,
-    // middleware: (curryGetDefaultMiddleware) => {
-    //     curryGetDefaultMiddleware({
-    //         thunk: {
-    //             extraArgument: { infoType: 'hello' },
-    //         },
-    //     });
-    // },
 });
 
 export const persistor = persistStore(store);
