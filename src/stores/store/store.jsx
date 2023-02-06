@@ -9,7 +9,7 @@ import weatherSlice from './actions/weather-slice';
 const persistConfig = {
     key: 'root',
     storage,
-    // blacklist: ['login'],
+    blacklist: ['addTodo'],
 };
 
 const reducer = combineReducers({

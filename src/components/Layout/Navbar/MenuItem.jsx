@@ -8,6 +8,7 @@ const MenuItem = (props) => {
             >
                 {props.icon}
                 <p className="font-semibold text-lime-600">{props.title}</p>
+                <div className="absolute left-2 top-[-5px] text-sm text-violet-600 font-bold">3</div>
             </div>
         </Link>
     );

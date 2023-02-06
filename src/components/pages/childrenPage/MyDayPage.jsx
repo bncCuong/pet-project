@@ -17,12 +17,13 @@ function MyDayPage() {
     const dispatch = useDispatch();
 
     const listJob = useSelector((state) => state.addTodo.todoList);
+
     const getTime = () => {
         const d = new Date();
         const currentHours = d.getHours();
         const currentMinutes = d.getMinutes();
 
-        return `${currentHours}:${currentMinutes}`;
+        return `${currentHours}:${currentMinutes} - ${d.getDate()}/${d.getMonth()}`;
     };
     const keydownHanler = (e) => {
         setShowText(false);
@@ -73,8 +74,15 @@ function MyDayPage() {
             </div>
 
             <div className="absolute top-[150px] h-[58%] w-[89%] overflow-y-scroll">
-                {listJob.map((job, index) => (
-                    <Cart key={index} name={job.name} />
+                {listJob.map((job) => (
+                    <Cart
+                        key={job.id}
+                        name={job.name}
+                        id={job.id}
+                        important={job.important}
+                        completed={job.completed}
+                        timeAdd={job.time}
+                    />
                 ))}
             </div>
 
@@ -92,7 +100,7 @@ function MyDayPage() {
                     onKeyDown={keydownHanler}
                 />
             </Tippy>
-            <p className="absolute text-2xl bottom-[106px] ml-3 pointer-events-none ">
+            <div className="absolute text-2xl bottom-[106px] ml-3 pointer-events-none ">
                 {showIcon ? (
                     <FontAwesomeIcon icon={faPlusSquare} />
                 ) : (
@@ -105,8 +113,7 @@ function MyDayPage() {
                         )}
                     </div>
                 )}
-            </p>
-            <p></p>
+            </div>
             <button className="absolute bottom-[110px] right-[50px]">
                 <FontAwesomeIcon icon={faNeuter} />
             </button>

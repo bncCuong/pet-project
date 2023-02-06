@@ -4,18 +4,50 @@ const todoSlice = createSlice({
     name: 'todolist',
     initialState: {
         todoList: [],
+        totalJob: 0,
+        totalImpotant: 0,
+        totalCompleted: 0,
     },
+
     reducers: {
         addToDo(state, action) {
             const newJob = action.payload;
             state.todoList.push({
+                id: Date.now(),
                 name: newJob.name,
                 time: newJob.time,
-                important: true,
+                important: false,
                 completed: false,
             });
+            state.totalJob++;
         },
-        setImpotant(state, action) {},
+        deleteTodo(state, action) {
+            const idJob = action.payload.id;
+            const index = state.todoList.findIndex((todo) => todo.id === idJob);
+            console.log(index);
+            state.todoList = state.todoList.filter((job) => job.id !== idJob);
+
+            if (state.todoList[index].important === true) {
+                state.totalImpotant--;
+            } else {
+                return;
+            }
+            state.totalJob--;
+        },
+        setImpotant(state, action) {
+            const index = state.todoList.findIndex((todo) => todo.id === action.payload.id);
+            state.todoList[index].important = action.payload.important;
+            if (state.todoList[index].important === true) {
+                state.totalImpotant++;
+            } else {
+                state.totalImpotant--;
+            }
+        },
+        setCompleted(state, action) {
+            const index = state.todoList.findIndex((todo) => todo.id === action.payload.id);
+            state.todoList[index].completed = action.payload.completed;
+            state.totalCompleted++;
+        },
     },
 });
 

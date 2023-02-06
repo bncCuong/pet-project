@@ -9,12 +9,12 @@ import { fetchWeatherData } from '../../../services/weather-services';
 
 const WeatherPage = () => {
     const dispatch = useDispatch();
-    const weatherCity = useSelector((state) => state.getWeatherData.infoCity);
-    console.log(weatherCity);
+    // const weatherCity = useSelector((state) => state.getWeatherData.infoCity);
+    // console.log(weatherCity);
 
-    useEffect(() => {
-        dispatch(fetchWeatherData({ q: 'tokyo' }));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(fetchWeatherData({ q: 'tokyo' }));
+    // }, [dispatch]);
 
     return (
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-white ">
