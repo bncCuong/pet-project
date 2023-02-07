@@ -46,7 +46,7 @@ const Cart = (props) => {
 
             <div
                 className="absoluter w-full h-10 bg-slate-200 border border-transparent rounded-md 
-            mb-3 flex items-center justify-between gap-2 pb-[2px] px-4 bg-opacity-75"
+            mb-3 flex items-center justify-between gap-2 pb-[2px] px-5 bg-opacity-75"
             >
                 <div className="flex gap-4">
                     <p onClick={importantHanler} className="flex items-center">

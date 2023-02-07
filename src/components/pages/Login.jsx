@@ -2,7 +2,8 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useDispatch } from 'react-redux/es/exports';
 import { loginActions } from '../../stores/store/actions/login-slice';
 import { useNavigate } from 'react-router-dom';
-const Login = (props) => {
+import { useEffect } from 'react';
+const Login = () => {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
@@ -16,6 +17,12 @@ const Login = (props) => {
             navigate('/');
         }
     };
+
+    useEffect(() => {
+        if (localStorage.getItem('uid')) {
+            navigate('/');
+        }
+    }, [navigate]);
 
     return (
         <div className="mt-[50px] flex flex-col items-center">
