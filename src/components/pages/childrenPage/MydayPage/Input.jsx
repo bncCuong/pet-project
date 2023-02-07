@@ -1,23 +1,16 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { todoActions } from '../../../stores/store/actions/todo-slice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNeuter } from '@fortawesome/free-solid-svg-icons';
-import { faPlusSquare, faCircle } from '@fortawesome/free-regular-svg-icons';
-import backgroundImg from '../../../assets/bgimage.jpg';
+import { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Tippy from '@tippyjs/react/headless';
+import TippyStyles from '../../../UI/TippyStyle';
+import { todoActions } from '../../../../stores/store/actions/todo-slice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare, faCircle } from '@fortawesome/free-regular-svg-icons';
 
-import TippyStyles from '../../UI/TippyStyle';
-import Cart from '../../UI/Cart';
-
-function MyDayPage() {
+const Input = () => {
     const [job, setJob] = useState('');
     const [showIcon, setShowIcon] = useState(true);
     const [showText, setShowText] = useState(true);
     const dispatch = useDispatch();
-
-    const listJob = useSelector((state) => state.addTodo.todoList);
-
     const getTime = () => {
         const d = new Date();
         const currentHours = d.getHours();
@@ -62,30 +55,7 @@ function MyDayPage() {
     };
 
     return (
-        <div className="p-10 h-[100%] relative">
-            <div className="absolute  top-0 bottom-0 right-0 left-0 z-0">
-                <img src={backgroundImg} alt="userAvatar" className="object-cover  " />
-            </div>
-            <div className="absolute border-[1px] px-2 py-1 rounded-md shadow-2xl ">
-                <p className="text-3xl font-semibold text-black z-10">My Day </p>
-                <p className="text-xl font-semibold">
-                    Focus on your day: Get things done whit My day, a list that refreshes every day!!!
-                </p>
-            </div>
-
-            <div className="absolute top-[150px] h-[58%] w-[89%] overflow-y-scroll">
-                {listJob.map((job) => (
-                    <Cart
-                        key={job.id}
-                        name={job.name}
-                        id={job.id}
-                        important={job.important}
-                        completed={job.completed}
-                        timeAdd={job.time}
-                    />
-                ))}
-            </div>
-
+        <Fragment>
             <Tippy
                 placement="top-start"
                 delay={[200, 200]}
@@ -114,11 +84,8 @@ function MyDayPage() {
                     </div>
                 )}
             </div>
-            <button className="absolute bottom-[110px] right-[50px]">
-                <FontAwesomeIcon icon={faNeuter} />
-            </button>
-        </div>
+        </Fragment>
     );
-}
+};
 
-export default MyDayPage;
+export default Input;

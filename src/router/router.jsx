@@ -10,7 +10,8 @@ import GlobalStyle from '../components/GlobalStyle/index';
 import Login from '../components/pages/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Error from '../components/pages/Error';
-import { MyDayPage, ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
+import MyDayPage from '../components/pages/childrenPage/MydayPage/MyDayPage';
+import { ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
 import WeatherPage from '../components/pages/childrenPage/WeatherPage';
 const ContainerLayout = () => {
     return (

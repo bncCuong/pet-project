@@ -23,15 +23,8 @@ const todoSlice = createSlice({
         },
         deleteTodo(state, action) {
             const idJob = action.payload.id;
-            const index = state.todoList.findIndex((todo) => todo.id === idJob);
-            console.log(index);
             state.todoList = state.todoList.filter((job) => job.id !== idJob);
 
-            if (state.todoList[index].important === true) {
-                state.totalImpotant--;
-            } else {
-                return;
-            }
             state.totalJob--;
         },
         setImpotant(state, action) {
