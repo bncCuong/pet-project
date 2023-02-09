@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { todoActions } from '../../stores/store/actions/todo-slice';
+import { todoActions } from '../../redux/store/actions/todo-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faCircle, faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -39,14 +39,14 @@ const Cart = (props) => {
     return (
         <Fragment>
             {important && (
-                <p className="border border-violet-400 w-[120px] py-1 flex items-center justify-center rounded-lg bg-violet-300 text-white">
+                <p className="border border-violet-400 w-[120px] py-1 flex items-center justify-center rounded-lg bg-violet-300 text-white animate-slideright ">
                     Impotarnt
                 </p>
             )}
 
             <div
                 className="absoluter w-full h-10 bg-slate-200 border border-transparent rounded-md 
-            mb-3 flex items-center justify-between gap-2 pb-[2px] px-5 bg-opacity-75"
+            mb-3 flex items-center justify-between gap-2 pb-[2px] px-5 bg-opacity-75 animate-slideup "
             >
                 <div className="flex gap-4">
                     <p onClick={importantHanler} className="flex items-center">

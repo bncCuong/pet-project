@@ -1,6 +1,6 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useDispatch } from 'react-redux/es/exports';
-import { loginActions } from '../../stores/store/actions/login-slice';
+import { loginActions } from '../../redux/store/actions/login-slice';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 const Login = () => {

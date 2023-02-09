@@ -12,7 +12,7 @@ function ImpotantPage() {
             <div className="absolute h-screen z-0">
                 <img src={bgImg} alt="bgImg" className=" h-[100%] " />
             </div>
-            <div className="absolute w-full px-10">
+            <div className="absolute w-full px-10 py-20">
                 {impotantJob.map((item) => (
                     <Cart
                         name={item.name}

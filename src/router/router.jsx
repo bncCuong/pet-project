@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import Home from '../components/pages/Home';
 
-import store, { persistor } from '../stores/store/store';
+import store, { persistor } from '../redux/store/store';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import GlobalStyle from '../components/GlobalStyle/index';
@@ -12,7 +12,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Error from '../components/pages/Error';
 import MyDayPage from '../components/pages/childrenPage/MydayPage/MyDayPage';
 import { ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
-import WeatherPage from '../components/pages/childrenPage/WeatherPage';
+import WeatherPage from '../components/pages/childrenPage/WeatherPage/WeatherPage';
 const ContainerLayout = () => {
     return (
         <GlobalStyle>

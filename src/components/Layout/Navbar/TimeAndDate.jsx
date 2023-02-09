@@ -1,4 +1,4 @@
-import useTimer from '../../../stores/hooks/useTimer';
+import useTimer from '../../hooks/useTimer';
 const TimeAndDate = (props) => {
     const { toDay, time, currentDay, currentYear } = useTimer();
     return (

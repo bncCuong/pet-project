@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Tippy from '@tippyjs/react/headless';
 import TippyStyles from '../../../UI/TippyStyle';
-import { todoActions } from '../../../../stores/store/actions/todo-slice';
+import { todoActions } from '../../../../redux/store/actions/todo-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare, faCircle } from '@fortawesome/free-regular-svg-icons';
 
