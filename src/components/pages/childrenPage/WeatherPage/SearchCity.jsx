@@ -6,7 +6,7 @@ const SearchCity = (props) => {
 
     const submitHanler = (e) => {
         e.preventDefault();
-
+        props.getCityName(city);
         setCity('');
     };
 

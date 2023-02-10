@@ -13,6 +13,7 @@ import Error from '../components/pages/Error';
 import MyDayPage from '../components/pages/childrenPage/MydayPage/MyDayPage';
 import { ImportantPage, CompletedPage, TaskPage } from '../components/pages/childrenPage/index';
 import WeatherPage from '../components/pages/childrenPage/WeatherPage/WeatherPage';
+import Music from '../components/pages/childrenPage/MusicPage';
 const ContainerLayout = () => {
     return (
         <GlobalStyle>
@@ -45,6 +46,7 @@ export default createBrowserRouter([
                             { element: <CompletedPage />, path: '/completed' },
                             { element: <TaskPage />, path: '/task' },
                             { element: <WeatherPage />, path: '/weather' },
+                            { element: <Music />, path: '/music' },
                         ],
                     },
                 ],

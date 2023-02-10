@@ -1,6 +1,6 @@
 const TippyStyles = ({ children }) => {
     return (
-        <div className="  w-fit h-fit px-2 py-1 rounded-xl bg-white border-[2px] border-gray-300 hover:bg-emerald-500 ">
+        <div className=" cursor-pointer  w-fit h-fit px-2 py-1 rounded-md text-white border-[1px] border-gray-300 bg-[#55495f]/30 flex items-center justify-center animate-slideright">
             {children}
         </div>
     );

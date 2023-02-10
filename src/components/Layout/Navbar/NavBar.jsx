@@ -1,4 +1,5 @@
 import MenuList from './MenuList';
+import MusicChill from './MusicChill';
 import TimeAndDate from './TimeAndDate';
 import Weather from './Weather';
 const Navbar = () => {
@@ -7,6 +8,7 @@ const Navbar = () => {
             <TimeAndDate />
             <MenuList />
             <Weather />
+            <MusicChill />
         </div>
     );
 };

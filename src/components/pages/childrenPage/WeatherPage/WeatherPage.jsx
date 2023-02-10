@@ -10,8 +10,9 @@ import SearchCity from './SearchCity';
 import { useState } from 'react';
 
 const WeatherPage = (props) => {
+    const [cityData, setCityData] = useState('');
     const [unitF, setUnitF] = useState('fasle');
-    const { data, isFetching, error } = useGetCurrentForecastQuery('Hanoi');
+    const { data, isFetching, error } = useGetCurrentForecastQuery(cityData || 'Hanoi');
     if (isFetching) return <Loading />;
     if (error) return <Error />;
     const {
@@ -24,6 +25,10 @@ const WeatherPage = (props) => {
             condition: { text, icon: icon_day },
         },
     } = data;
+
+    const setCitySearch = (city) => {
+        setCityData(city);
+    };
 
     const changeUnitToCHanler = () => {
         setUnitF(true);
@@ -64,14 +69,14 @@ const WeatherPage = (props) => {
                             <p className="absolute text-xs w-[120px] bottom-10 ">Wind: {wind_kph} mph</p>
                         </div>
                     </div>
-                    <SearchCity inputChangeHanler />
+                    <SearchCity inputChangeHanler getCityName={setCitySearch} />
                 </div>
 
                 <div className="relative text-white h-full mt-4">
                     <span>WeatherForecast</span>
                     <p className="uppercase  w-[500px] font-semibold ">
                         national weather(unit:
-                        <button onClick={changeUnitToCHanler} className="ml-1">
+                        <button onClick={changeUnitToCHanler} className="ml-2">
                             <FontAwesomeIcon className="w-2 mb-1" icon={faCircle} />
                             <span>C</span>
                         </button>

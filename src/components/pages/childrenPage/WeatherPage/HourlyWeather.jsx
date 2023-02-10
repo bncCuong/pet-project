@@ -4,7 +4,7 @@ import 'swiper/css';
 
 const HourlyWeather = ({ data, unit }) => {
     return (
-        <div className="absolute bottom-[240px] h-40  w-[95%] px-10">
+        <div className="absolute bottom-[150px] h-40  w-[95%] px-10">
             <p className="font-bold text-white border-b-2 ">Hoursly forecast (24h)</p>
             <Swiper slidesPerView={6}>
                 {data.map((item, i) => (
