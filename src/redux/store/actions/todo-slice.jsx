@@ -31,9 +31,9 @@ const todoSlice = createSlice({
             const index = state.todoList.findIndex((todo) => todo.id === action.payload.id);
             state.todoList[index].important = action.payload.important;
             if (state.todoList[index].important === true) {
-                state.totalImpotant++;
+                return;
             } else {
-                state.totalImpotant--;
+                state.totalImpotant++;
             }
         },
         setCompleted(state, action) {
