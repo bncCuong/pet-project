@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 function Error() {
     const error = useRouteError();
     const navigate = useNavigate();
-
     const backHomePageHanler = () => {
         navigate('/');
     };
@@ -17,7 +16,7 @@ function Error() {
         <div className="flex">
             <img src={image404} alt="404Img" className="w-[50%]" />
             <div className="mt-[100px]">
-                <p className="text-2xl text-red-500 font-semibold">{error.data}</p>
+                {/* <p className="text-2xl text-red-500 font-semibold">{error.data}</p> */}
 
                 <div className="mt-5">
                     <p className="text-xl font-medium">Back To: </p>

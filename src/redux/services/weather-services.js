@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const KEY_API = 'ebc3cb54174444b3a01121613230902';
 export const weatherCoreApi = createApi({
-    reducerPath: 'weatherCoreApii',
+    reducerPath: 'weatherCoreApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://api.weatherapi.com/v1',
         prepareHeaders: (headers) => {

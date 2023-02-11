@@ -11,30 +11,21 @@ import todoSlice from './actions/todo-slice';
 const persistConfig = {
     key: 'root',
     storage,
-    // blacklist: ['addTodo'],
+    // blacklist: ['weatherCoreApi'],
 };
 
 const reducer = combineReducers({
     login: loginSlice.reducer,
     addTodo: todoSlice.reducer,
     [weatherCoreApi.reducerPath]: weatherCoreApi.reducer,
-    [musicCoreApi.reducerPath]: musicCoreApi.reducer,
 });
 
 const persitedReducer = persistReducer(persistConfig, reducer);
 
-// const store = configureStore({
-//     reducer: {
-//         login: loginSlice.reducer,
-//     },
-// });
 const store = configureStore({
     reducer: persitedReducer,
     middleware: (getDefaultMiddleware) => {
-        return (
-            getDefaultMiddleware().concat(weatherCoreApi.middleware),
-            getDefaultMiddleware().concat(musicCoreApi.middleware)
-        );
+        return getDefaultMiddleware().concat(weatherCoreApi.middleware);
     },
 });
 
