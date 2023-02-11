@@ -27,7 +27,6 @@ const WeatherPage = (props) => {
             condition: { text, icon: icon_day },
         },
     } = data;
-    console.log(data);
     const { hour } = data.forecast.forecastday[0];
 
     const changeUnitToCHanler = () => {

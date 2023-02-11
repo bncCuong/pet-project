@@ -11,7 +11,7 @@ import todoSlice from './actions/todo-slice';
 const persistConfig = {
     key: 'root',
     storage,
-    // blacklist: ['weatherCoreApi'],
+    blacklist: ['weatherCoreApi'],
 };
 
 const reducer = combineReducers({
