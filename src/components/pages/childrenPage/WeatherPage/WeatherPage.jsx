@@ -72,7 +72,7 @@ const WeatherPage = (props) => {
                             <p className="text-[40px]">{humidity}%</p>
                         </div>
                         <div className="relative">
-                            ``
+                        
                             <p className="relative">
                                 <FontAwesomeIcon icon={faPlusMinus} className="text-[30px] absolute top-10 ml-3" />
                                 <span className="text-[40px] absolute top-2 ml-7">{unitF ? 3 : 6}</span>
