@@ -6,6 +6,7 @@ module.exports = {
             colors: {
                 black: '#191624',
             },
+            
             animation: {
                 slideup: 'slideup 1s ease-in-out',
                 slidedown: 'slidedown 1s ease-in-out',
@@ -13,6 +14,7 @@ module.exports = {
                 slideright: 'slideright 1s ease-in-out',
                 wave: 'wave 1.2s linear infinite',
                 slowfade: 'slowfade 2.2s ease-in-out',
+                buttonSpin: 'spin 2.5s linear infinite'
             },
             keyframes: {
                 slowfade: {
@@ -35,6 +37,9 @@ module.exports = {
                     from: { opacity: 0, transform: 'translateX(20px)' },
                     to: { opacity: 1, transform: 'translateX(0)' },
                 },
+                spin: {
+                    form:{transform:'roteta(-360deg)' }
+                },
                 wave: {
                     '0%': { transform: 'scale(0)' },
                     '50%': { transform: 'scale(1)' },
@@ -42,5 +47,6 @@ module.exports = {
                 },
             },
         },
+        
     },
 };
