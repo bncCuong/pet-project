@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { todoActions } from '../../redux/store/actions/todo-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faCircle, faSquare } from '@fortawesome/free-regular-svg-icons';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCalendarDays, faCheckSquare, faCircle, faSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCheck, faX } from '@fortawesome/free-solid-svg-icons';
 import { Fragment } from 'react';
 
 const Cart = (props) => {
@@ -38,48 +38,48 @@ const Cart = (props) => {
 
     return (
         <Fragment>
-            {important && (
-                <p className="border border-violet-400 w-[120px] py-1 flex items-center justify-center rounded-lg bg-violet-300 text-white animate-slideright ">
-                    Impotarnt
-                </p>
-            )}
-
-            <div className="absoluter w-[240px] h-[240px] border border-transparent rounded-md 
+            <div
+                className={`${
+                    important ? 'box' : ''
+                } overflow-hidden relative absoluter w-[240px] h-[240px] border border-transparent rounded-md  
                 mb-3 flex flex-col items-start  gap-2 pb-[2px] px-5 bg-gradient-to-bl from-[#3721b4] to-[#0b1d66] bg-opacity-20 animate-slideup 
-                ">
-                <div className="w-full border-b-[1px] border-b-gray-400 justify-center flex  text-yellow-50">{timeAdd}</div>
+            `}
+            >
+                <div className="absolute w-[94%] h-[94%] bg-[#210e91] top-[3%] left-[3%] flex flex-col px-2 py-1 ">
+                    <div className="w-full pb-1 border-b-[1px] border-b-gray-400 justify-center flex items-center  text-yellow-50">
+                        <FontAwesomeIcon icon={faCalendarDays} />
+                        {timeAdd}
+                    </div>
 
-                <div className="flex gap-4">
-                    <p onClick={importantHanler} className="flex items-center">
-                        {important ? (
-                            <FontAwesomeIcon
-                                icon={faCheck}
-                                className="border-[2px] border-violet-700 rounded-full shadow-xl shadow-indigo-400/75 text-violet-700"
-                            />
+                    <p className="text-white text-sm mt-2 break-words leading-[26px]">{name}</p>
+
+                    <div onClick={completedHanler} className="mt-1 text-xl flex items-center gap-5">
+                        {!completed ? (
+                            <FontAwesomeIcon icon={faSquare} />
                         ) : (
-                            <FontAwesomeIcon icon={faCircle} className="" />
+                            <FontAwesomeIcon icon={faCheckSquare} className="text-violet-700  " />
                         )}
-                    </p>
-                    <p>{name}</p>
-                </div>
-                
-                <button onClick={deleteJob}> delete job</button>
+                    </div>
 
-                <div onClick={completedHanler} className="mt-1 text-xl flex items-center gap-5">
-                    {!completed ? (
-                        <FontAwesomeIcon icon={faSquare} />
-                    ) : (
-                        <FontAwesomeIcon icon={faCheckSquare} className="text-violet-700  " />
-                    )}
+                    <label className="absolute w-14 h-6 bg-fuchsia-200 cursor-pointer rounded-full bottom-1 ">
+                        <input onClick={importantHanler} type="checkbox" id="check" className="sr-only peer" />
+                        <span
+                            for="check"
+                            className="absolute w-[36%] h-4/5 bg-rose-500/90 rounded-full left-1 top-[2px] peer-checked:bg-rose-700/90 peer-checked:left-8 transition-all duration-500"
+                        >
+                            {important && (
+                                <FontAwesomeIcon
+                                    icon={faCheck}
+                                    className=" absolute bottom-0 left-[2px] font-bold  text-violet-700 "
+                                />
+                            )}
+                        </span>
+                    </label>
+
+                    <button onClick={deleteJob} className="absolute bottom-0 right-0 text-red-500 p-3">
+                        <FontAwesomeIcon icon={faX} />
+                    </button>
                 </div>
-            
-                 
-            <div className=' box relative z-10 w-20 h-20 rounded-[4px] flex items-center justify-center text-sm px-6 py-1 cursor-pointer
-               ]
-            '>
-                   {/*   before:absolute before:w-[98px] before:h-[98px] before:top-[-12%] before:left-[-14%] before:bg-gradient-to-b from-red-600/8 to-[#000] before:animate-buttonSpin before:z-0
-                after:absolute after:w-[75px] after:h-[75px] after:bg-transparent after:top-[3%] after:left-[3%    */}
-            </div>
             </div>
         </Fragment>
     );

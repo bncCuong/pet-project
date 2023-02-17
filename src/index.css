@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities{
+    .box::before{
+        @apply content-[''] w-[400px] h-[500px] absolute bg-[conic-gradient(transparent_200deg,#04b0ee_320deg)]
+        top-[-55%] left-[-33%] animate-buttonSpin
+    }
+}
 
 * {
     margin: 0;
