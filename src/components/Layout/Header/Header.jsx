@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import TippyStyles from '../../UI/TippyStyle';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
 
 const Header = () => {
     // const [showModal, setShowModal] = useState(false);
