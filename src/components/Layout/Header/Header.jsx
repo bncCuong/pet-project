@@ -6,11 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import TippyStyles from '../../UI/TippyStyle';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import LogoutModal from '../../../components/Modal/logout-modal'
 import { useState } from 'react';
 
 const Header = () => {
-    const [showModal, setShowModal] = useState(false)
+    // const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
     const dispath = useDispatch();
     const infoUser = useSelector((state) => state.login.info);
@@ -24,7 +23,6 @@ const Header = () => {
 
     return (
         <div className=" border-b-2 border-b-neutral-800 shadow-xl px-4 py-2 flex bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 ">
-            {showModal && <LogoutModal/>}
             <div className="flex gap-2 items-center uppercase font-semibold ">
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"

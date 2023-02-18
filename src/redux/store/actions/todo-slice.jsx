@@ -23,23 +23,35 @@ const todoSlice = createSlice({
         },
         deleteTodo(state, action) {
             const idJob = action.payload.id;
+            const completed = action.payload.completed;
+            const important = action.payload.important;
             state.todoList = state.todoList.filter((job) => job.id !== idJob);
-
+            if (important) {
+                state.totalImpotant--;
+            }
+            if (completed) {
+                state.totalCompleted--;
+            }
             state.totalJob--;
         },
         setImpotant(state, action) {
             const index = state.todoList.findIndex((todo) => todo.id === action.payload.id);
             state.todoList[index].important = action.payload.important;
             if (state.todoList[index].important === true) {
-                return;
-            } else {
                 state.totalImpotant++;
+            } else {
+                state.totalImpotant--;
             }
         },
         setCompleted(state, action) {
             const index = state.todoList.findIndex((todo) => todo.id === action.payload.id);
             state.todoList[index].completed = action.payload.completed;
-            state.totalCompleted++;
+            console.log(state.todoList[index].completed);
+            if (state.todoList[index].completed === true) {
+                state.totalCompleted++;
+            } else {
+                state.totalCompleted--;
+            }
         },
     },
 });

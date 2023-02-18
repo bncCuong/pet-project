@@ -5,7 +5,7 @@ const ListJobs = () => {
     const listJob = useSelector((state) => state.addTodo.todoList);
 
     return (
-        <div className="absolute top-[150px] h-[58%] w-[89%] overflow-y-auto flex flex-wrap gap-8 ">
+        <div className="absolute top-[150px] h-[58%] w-[89%] overflow-y-auto flex flex-wrap gap-4 ">
             {listJob.map((job) => (
                 <Cart
                     key={job.id}

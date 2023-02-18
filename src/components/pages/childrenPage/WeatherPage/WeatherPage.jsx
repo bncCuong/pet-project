@@ -1,21 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
-import { faPlusMinus } from '@fortawesome/free-solid-svg-icons';
+import { faPlusMinus, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import sunRise from '../../../../assets/weather-sun.jpg';
 import snow from '../../../../assets/weather-snow.jpg';
 import rain from '../../../../assets/weather-rain.jpg';
 import { useGetCurrentForecastQuery } from '../../../../redux/services/weather-services';
-import Loading from '../../Loading';
 import Error from '../../Error';
 import HourlyWeather from './HourlyWeather';
 import SearchCity from './SearchCity';
 import { useState } from 'react';
 
-const WeatherPage = (props) => {
+const WeatherPage = () => {
     const [cityName, setCityName] = useState('');
     const [unitF, setUnitF] = useState('fasle');
     const { data, isFetching, error } = useGetCurrentForecastQuery(cityName || 'hanoi');
-    if (isFetching) return <Loading />;
+    if(isFetching) return <FontAwesomeIcon icon={faSpinner} />
     if (error) return <Error />;
     const {
         location: { name, country, localtime },
@@ -50,7 +49,7 @@ const WeatherPage = (props) => {
     return (
         <div className="absolute top-0 bottom-0 left-0 right-0 bg-white ">
             <img src={bgImage} alt="sunimage" className="absolute object-contain" />
-
+            
             <div className="absolute flex flex-col p-5 w-full h-screen">
                 <div className="h-[180px] flex ">
                     <div className="w-[200px] flex-[33%]">

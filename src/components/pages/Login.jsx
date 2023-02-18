@@ -14,13 +14,13 @@ const Login = () => {
         const reponse = await signInWithPopup(auth, provider);
         dispatch(loginActions.getInfoUser(reponse.user));
         if (localStorage.getItem('uid')) {
-            navigate('/');
+            navigate('/today');
         }
     };
 
     useEffect(() => {
         if (localStorage.getItem('uid')) {
-            navigate('/');
+            navigate('/today');
         }
     }, [navigate]);
 

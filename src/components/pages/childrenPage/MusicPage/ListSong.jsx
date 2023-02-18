@@ -1,7 +1,6 @@
 import { useGetMusicDataQuery } from '../../../../redux/services/music-services';
 
 import Error from '../../Error';
-import Loading from '../../Loading';
 import CardSong from './CardSong';
 
 const ListSong = () => {

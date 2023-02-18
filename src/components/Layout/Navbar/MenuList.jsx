@@ -1,12 +1,13 @@
-import { faSun } from '@fortawesome/free-regular-svg-icons';
+import { faSquareCheck, faStar, faSun } from '@fortawesome/free-regular-svg-icons';
+import { faHammer } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MenuItem from './MenuItem';
 
 const MENU_LIST = [
     { id: 'it1', title: 'Today', icon: <FontAwesomeIcon icon={faSun} />, to: '/today' },
-    { id: 'it2', title: 'Important', icon: <FontAwesomeIcon icon={faSun} />, to: '/important' },
-    { id: 'it3', title: 'Completed', icon: <FontAwesomeIcon icon={faSun} />, to: '/completed' },
-    { id: 'it4', title: 'Task', icon: <FontAwesomeIcon icon={faSun} />, to: '/task' },
+    { id: 'it2', title: 'Important', icon: <FontAwesomeIcon icon={faStar} />, to: '/important' },
+    { id: 'it3', title: 'Completed', icon: <FontAwesomeIcon icon={faSquareCheck} />, to: '/completed' },
+    { id: 'it4', title: 'Task', icon: <FontAwesomeIcon icon={faHammer} />, to: '/task' },
 ];
 const MenuList = (props) => {
     const menuList = MENU_LIST.map((item) => (
