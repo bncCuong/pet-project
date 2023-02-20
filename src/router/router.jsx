@@ -7,7 +7,7 @@ import store, { persistor } from '../redux/store/store';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import GlobalStyle from '../components/GlobalStyle/index';
-import Login from '../components/pages/Login';
+import Login from '../components/pages/Login/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Error from '../components/pages/Error';
 import MyDayPage from '../components/pages/childrenPage/MydayPage/MyDayPage';

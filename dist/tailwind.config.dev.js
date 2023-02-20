@@ -15,7 +15,9 @@ module.exports = {
         slideright: 'slideright 1s ease-in-out',
         wave: 'wave 1.2s linear infinite',
         slowfade: 'slowfade 2.2s ease-in-out',
-        buttonSpin: 'spin 2.5s linear infinite'
+        buttonSpin: 'spin 4s linear infinite',
+        moveright: 'moveright 0.7s linear forwards',
+        moveleft: 'moveleft 0.7s linear forwards'
       },
       keyframes: {
         slowfade: {
@@ -24,6 +26,26 @@ module.exports = {
           },
           to: {
             opacity: 1
+          }
+        },
+        moveleft: {
+          from: {
+            opacity: 0,
+            transform: 'translateX(100%)'
+          },
+          to: {
+            opacity: 1,
+            transform: 'none'
+          }
+        },
+        moveright: {
+          from: {
+            opacity: 0,
+            transform: 'translateX(-100%)'
+          },
+          to: {
+            opacity: 1,
+            transform: 'none'
           }
         },
         slideup: {

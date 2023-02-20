@@ -15,11 +15,21 @@ module.exports = {
                 wave: 'wave 1.2s linear infinite',
                 slowfade: 'slowfade 2.2s ease-in-out',
                 buttonSpin: 'spin 4s linear infinite',
+                moveright: 'moveright 0.7s linear forwards',
+                moveleft: 'moveleft 0.7s linear forwards',
             },
             keyframes: {
                 slowfade: {
                     from: { opacity: 0 },
                     to: { opacity: 1 },
+                },
+                moveleft: {
+                    from: { opacity: 0, transform: 'translateX(100%)' },
+                    to: { opacity: 1, transform: 'none' },
+                },
+                moveright: {
+                    from: { opacity: 0, transform: 'translateX(-100%)' },
+                    to: { opacity: 1, transform: 'none' },
                 },
                 slideup: {
                     from: { opacity: 0, transform: 'translateY(25%)' },

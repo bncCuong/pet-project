@@ -9,6 +9,9 @@
         @apply content-[''] w-[400px] h-[500px] absolute bg-[conic-gradient(transparent_200deg,#04b0ee_320deg)]
         top-[-55%] left-[-33%] animate-buttonSpin;
     }
+    .from::before {
+        @apply content-[''] absolute top-0 left-[50%] w-[2px] h-[100%] bg-gray-400;
+    }
 }
 
 * {
