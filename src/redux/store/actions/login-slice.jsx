@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const loginSlice = createSlice({
     name: 'user',
     initialState: {
+        account: [],
         info: {},
         saveToLocalStore: null,
     },
@@ -18,6 +19,10 @@ const loginSlice = createSlice({
                 };
                 state.saveToLocalStore = localStorage.setItem('uid', infoUser.uid);
             }
+        },
+        createNewUser(state, action) {
+            const newUser = action.payload;
+            state.account = { userName: newUser.userName, userID: newUser.id, userEmail: newUser.userEmail };
         },
         logout(state) {
             state.info = {};

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const useInput = (validateValue) => {
-    const [enteredvalue, setEnteredValue] = useState(false);
+    const [enteredvalue, setEnteredValue] = useState('');
     const [isTouchInput, setIsTouchInput] = useState(false);
 
     const valueIsValid = validateValue(enteredvalue);
@@ -15,12 +15,22 @@ const useInput = (validateValue) => {
     const touchInputHanler = () => {
         setIsTouchInput(true);
     };
-
+    const clickInputHanler = () => {
+        setIsTouchInput(false);
+    };
     const resetInput = () => {
         setIsTouchInput(false);
         setEnteredValue('');
     };
-    return { value: enteredvalue, valueIsValid, hasError, changeInputHanler, touchInputHanler, resetInput };
+    return {
+        value: enteredvalue,
+        valueIsValid,
+        hasError,
+        changeInputHanler,
+        touchInputHanler,
+        resetInput,
+        clickInputHanler,
+    };
 };
 
 export default useInput;
