@@ -2,7 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const loginSlice = createSlice({
     name: 'user',
     initialState: {
-        account: [],
+        account: [
+            {
+                userName: 'bncCuong',
+                userPassword: '123456',
+            },
+        ],
         info: {},
         saveToLocalStore: null,
     },
@@ -22,11 +27,16 @@ const loginSlice = createSlice({
         },
         createNewUser(state, action) {
             const newUser = action.payload;
-            state.account = { userName: newUser.userName, userID: newUser.id, userEmail: newUser.userEmail };
+            state.account = {
+                userName: newUser.userName,
+                userID: newUser.id,
+                userEmail: newUser.userEmail,
+                userPassword: newUser.userPassword,
+            };
         },
         logout(state) {
             state.info = {};
-            state.saveToLocalStore = localStorage.clear();
+            // state.saveToLocalStore = localStorage.clear();
         },
     },
 });

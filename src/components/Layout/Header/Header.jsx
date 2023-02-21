@@ -11,8 +11,7 @@ const Header = () => {
     // const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
     const dispath = useDispatch();
-    const infoUser = useSelector((state) => state.login.info);
-    const { name, avatar, email } = infoUser;
+    const { name, avatar, email } = useSelector((state) => state.login.info);
 
     const logoutHanler = () => {
         dispath(loginActions.logout());

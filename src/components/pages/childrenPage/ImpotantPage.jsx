@@ -6,7 +6,6 @@ function ImpotantPage() {
     const listJob = useSelector((state) => state.addTodo.todoList);
     const impotantJob = listJob.filter((job) => job.important === true);
 
-    console.log(impotantJob);
     return (
         <div className="relative">
             <div className="absolute h-screen z-0">
