@@ -8,7 +8,7 @@ const Navbar = () => {
             <TimeAndDate />
             <MenuList />
             <Weather />
-            <MusicChill />
+            {/* <MusicChill /> */}
         </div>
     );
 };

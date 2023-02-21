@@ -33,11 +33,11 @@ const loginSlice = createSlice({
                 userEmail: newUser.userEmail,
                 userPassword: newUser.userPassword,
             };
-            state.saveToLocalStore = localStorage.setItem('uid', newUser.userName);
+            state.saveToLocalStore = localStorage.setItem('newUser', newUser.userName);
         },
         logout(state) {
             state.info = {};
-            // state.saveToLocalStore = localStorage.clear();
+            state.saveToLocalStore = localStorage.clear();
         },
     },
 });

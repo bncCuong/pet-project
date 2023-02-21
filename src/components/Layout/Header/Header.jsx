@@ -12,7 +12,7 @@ const Header = () => {
     const navigate = useNavigate();
     const dispath = useDispatch();
     const { name, avatar, email } = useSelector((state) => state.login.info);
-
+    const { userName, userEmail } = useSelector((state) => state.login.account);
     const logoutHanler = () => {
         dispath(loginActions.logout());
         navigate('/login');
@@ -34,7 +34,7 @@ const Header = () => {
 
             <Tippy
                 interactive
-                delay={[200, 200]}
+                delay={[100, 200]}
                 placement="bottom"
                 render={(attrs) => (
                     <TippyStyles {...attrs} tabIndex="-1">
@@ -48,8 +48,8 @@ const Header = () => {
                 <div className="flex items-center gap-2">
                     <img src={avatar} alt="userAvatar" className="w-[12%] rounded-full" />
                     <div>
-                        <p className="text-lg font-medium">{name}</p>
-                        <p className="text-sm">{email}</p>
+                        <p className="text-lg font-medium">{name || userName}</p>
+                        <p className="text-sm">{email || userEmail}</p>
                     </div>
                 </div>
             </Tippy>

@@ -39,11 +39,11 @@ const LoginFromValidate = () => {
         }
     };
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('uid')) {
-    //         navigate('/today');
-    //     }
-    // }, [navigate]);
+    useEffect(() => {
+        if (localStorage.getItem('uid') || localStorage.getItem('newUser')) {
+            navigate('/today');
+        }
+    }, [navigate]);
 
     return (
         <div className="w-[1000px] h-[540px] bg-white rounded-xl overflow-hidden shadow-xl shadow-slate-600 relative flex ">

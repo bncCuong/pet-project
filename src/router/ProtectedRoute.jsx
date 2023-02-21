@@ -5,7 +5,7 @@ const ProtectedRoute = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!localStorage.getItem('uid')) {
+        if (!localStorage.getItem('uid') && !localStorage.getItem('newUser')) {
             navigate('/login');
             return;
         }

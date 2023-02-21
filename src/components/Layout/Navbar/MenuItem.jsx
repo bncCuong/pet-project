@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const MenuItem = (props) => {
     const totalJob = useSelector((state) => state.addTodo.totalJob);
@@ -6,7 +6,11 @@ const MenuItem = (props) => {
     const totalCompleted = useSelector((state) => state.addTodo.totalCompleted);
 
     return (
-        <Link to={props.to}>
+        <NavLink
+            to={props.to}
+            className={({ isActive }) => (isActive ? 'bg-gradient-to-r from-yellow-400 to-orange-400' : undefined)}
+            end
+        >
             <div
                 className={`relative flex gap-2 items-center mb-2 text-xl  py-2 pl-4 cursor-pointer hover:bg-gradient-to-r from-yellow-400 to-orange-400
                 mt-2 after:absolute  after:content-[''] after:left-1  after:w-1 after:h-4 after:rounded-lg hover:after:bg-white after:animate-bounce`}
@@ -25,7 +29,7 @@ const MenuItem = (props) => {
                     {totalCompleted > 0 && props.title === 'Completed' && totalCompleted}
                 </div>
             </div>
-        </Link>
+        </NavLink>
     );
 };
 export default MenuItem;

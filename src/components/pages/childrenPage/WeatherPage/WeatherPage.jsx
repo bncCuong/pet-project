@@ -14,7 +14,7 @@ const WeatherPage = () => {
     const [cityName, setCityName] = useState('');
     const [unitF, setUnitF] = useState('fasle');
     const { data, isFetching, error } = useGetCurrentForecastQuery(cityName || 'hanoi');
-    if(isFetching) return <FontAwesomeIcon icon={faSpinner} />
+    if (isFetching) return <FontAwesomeIcon icon={faSpinner} />;
     if (error) return <Error />;
     const {
         location: { name, country, localtime },
@@ -47,9 +47,8 @@ const WeatherPage = () => {
         bgImage = rain;
     }
     return (
-        <div className="absolute top-0 bottom-0 left-0 right-0 bg-white ">
+        <div className="absolute inset-0 bg-white ">
             <img src={bgImage} alt="sunimage" className="absolute object-contain" />
-            
             <div className="absolute flex flex-col p-5 w-full h-screen">
                 <div className="h-[180px] flex ">
                     <div className="w-[200px] flex-[33%]">
@@ -70,7 +69,6 @@ const WeatherPage = () => {
                             <p className="text-[40px]">{humidity}%</p>
                         </div>
                         <div className="relative">
-                        
                             <p className="relative">
                                 <FontAwesomeIcon icon={faPlusMinus} className="text-[30px] absolute top-10 ml-3" />
                                 <span className="text-[40px] absolute top-2 ml-7">{unitF ? 3 : 6}</span>
