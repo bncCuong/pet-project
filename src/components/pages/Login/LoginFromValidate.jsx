@@ -11,7 +11,7 @@ const LoginFromValidate = () => {
     const [login, setLogin] = useState(true);
     const [signIn, setSignIn] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const { userName } = useSelector((state) => state.login.account);
+    // const { userName } = useSelector((state) => state.login.account);
 
     const navigate = useNavigate();
 

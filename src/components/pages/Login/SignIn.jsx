@@ -8,7 +8,7 @@ const SignIn = ({ loginWhitGoolgeHanler, showPasswordHanler, login, showPassword
     const [accountValue, setAccountValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const { userName, userPassword } = useSelector((state) => state.login.account);
-    console.log(userName, userPassword, accountValue, passwordValue);
+    console.log(userName, userPassword);
 
     const navigate = useNavigate();
 
