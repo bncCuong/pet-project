@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-regular-svg-icons';
@@ -8,9 +8,14 @@ const SignIn = ({ loginWhitGoolgeHanler, showPasswordHanler, login, showPassword
     const [accountValue, setAccountValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const { userName, userPassword } = useSelector((state) => state.login.account);
-
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if ((userName, userPassword)) {
+            setAccountValue(userName);
+            setPasswordValue(userPassword);
+        }
+    }, [userName, userPassword]);
     const submitLoginHanler = (e) => {
         e.preventDefault();
 
@@ -47,8 +52,9 @@ const SignIn = ({ loginWhitGoolgeHanler, showPasswordHanler, login, showPassword
                         className="w-full h-full bg-slate-300/40 placeholder:text-gray-500 px-5 pb-[2px] outline-none"
                         type="text"
                         placeholder="text: bncCuong"
-                        value={accountValue}
+                        // value={accountValue}
                         onChange={(e) => setAccountValue(e.target.value)}
+                        defaultValue={userName ? userName : ''}
                     />
                 </div>
                 <p
@@ -62,8 +68,9 @@ const SignIn = ({ loginWhitGoolgeHanler, showPasswordHanler, login, showPassword
                         className="w-full h-full bg-slate-300/40 placeholder:text-gray-500 px-5 pb-[2px] outline-none"
                         type={showPassword ? 'text' : 'password'}
                         placeholder="Password: 123456"
-                        value={passwordValue}
+                        // value={passwordValue}
                         onChange={(e) => setPasswordValue(e.target.value)}
+                        defaultValue={userPassword ? userPassword : ''}
                     />
                 </div>
 

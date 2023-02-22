@@ -37,7 +37,7 @@ const loginSlice = createSlice({
         },
         logout(state) {
             state.info = {};
-            state.saveToLocalStore = localStorage.clear();
+            // state.saveToLocalStore = localStorage.clear();
         },
     },
 });
