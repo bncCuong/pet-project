@@ -5,7 +5,7 @@ import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import TippyStyles from '../../UI/TippyStyle';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown, faArrowUp, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
     // const [showModal, setShowModal] = useState(false);
@@ -51,6 +51,9 @@ const Header = () => {
                         <p className="text-lg font-medium">{name || userName}</p>
                         <p className="text-sm">{email || userEmail}</p>
                     </div>
+                    <p className="text-black pt-6 font-light ">
+                        <FontAwesomeIcon icon={faArrowDown} />
+                    </p>
                 </div>
             </Tippy>
         </div>

@@ -16,13 +16,14 @@ const SignIn = ({ loginWhitGoolgeHanler, showPasswordHanler, login, showPassword
             setPasswordValue(userPassword);
         }
     }, [userName, userPassword]);
+
     const submitLoginHanler = (e) => {
         e.preventDefault();
 
         if (userName === accountValue && userPassword === passwordValue) {
             navigate('/today');
-        } else {
-            console.log('wrong somthing');
+        } else if(userName !== accountValue || userPassword !== passwordValue){
+           
         }
     };
     return (

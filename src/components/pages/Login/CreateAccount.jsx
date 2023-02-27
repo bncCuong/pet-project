@@ -122,6 +122,7 @@ const CreateAccount = ({ signIn, showPassword, showPasswordHanler, swapHanler })
                         onChange={passwordChangeInputHanler}
                         onClick={passwordClickInputHanler}
                         onBlur={passwordTouchInputHanler}
+                       
                     />
                     {passwordError && (
                         <p className="text-red-500 text-xs ml-2 absolute top-11 ">
