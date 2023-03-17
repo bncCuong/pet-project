@@ -20,7 +20,7 @@ function CompletedPage() {
                     </span>
                     <p>Completed</p>
                 </div>
-                <div className="absolute w-full px-10 py-20 mt-20">
+                <div className="absolute w-full px-10 py-20 mt-20 flex-wrap flex gap-4">
                     {completedJob.map((item) => (
                         <Cart
                             name={item.name}
